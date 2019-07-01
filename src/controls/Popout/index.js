@@ -7,7 +7,7 @@ const PopoutContext = React.createContext();
 const PopoutDispatch = React.createContext();
 
 function Popout({ children, content }) {
-  const [toggled, toggle] = useState(true);
+  const [toggled, toggle] = useState(false);
 
   return (
     <PopoutContext.Provider value={toggled}>

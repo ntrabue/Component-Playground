@@ -11,6 +11,7 @@ import Card from "../controls/Cards";
 import Tooltip from "../controls/Tooltip";
 import Popout from "../controls/Popout";
 import TestModal from "./TestModal";
+import { Input, Label, Form } from "../controls/Form";
 
 const Dashboard = () => {
   function handleSubmit(values) {
@@ -87,10 +88,33 @@ const Dashboard = () => {
       <H4>Colors:</H4>
       <Badge>Default</Badge>
       <Badge type="red">Red</Badge>
-      <Badge type="transparent">Transparent</Badge>
+      <Badge type="light">Light</Badge>
       <Badge type="orange">Orange</Badge>
       <Badge type="yellow">Yellow</Badge>
       <Badge type="green">Green</Badge>
+
+      <hr />
+      <H2>Form Elements</H2>
+      <Form>
+        <Label>Text</Label>
+        <Input type="text" />
+
+        <Label>Textarea</Label>
+        <Input type="textarea" />
+
+        <Label>Select</Label>
+        <Input type="select">
+          <option />
+          <option value="1">1</option>
+          <option value="2">2</option>
+        </Input>
+
+        <Label>Checkbox</Label>
+        <Input type="checkbox" />
+
+        <Label>Switch</Label>
+        <Input type="switch" />
+      </Form>
 
       <hr />
       <H2>Tooltips</H2>
@@ -120,8 +144,21 @@ const Dashboard = () => {
         <H2>Here is a card</H2>
       </Card>
       <hr />
+      <H2>Popout</H2>
       <Popout content={<TestModal />}>
-        <Button>Neat</Button>
+        <Button margin="0 10px">Click to see a popout</Button>
+      </Popout>
+      <Popout content={<TestModal />}>
+        <Button margin="0 10px">Click to see a popout</Button>
+      </Popout>
+      <Popout content={<TestModal />}>
+        <Button margin="0 10px">Click to see a popout</Button>
+      </Popout>
+      <Popout content={<TestModal />}>
+        <Button margin="0 10px">Click to see a popout</Button>
+      </Popout>
+      <Popout content={<TestModal />}>
+        <Button margin="0 10px">Click to see a popout</Button>
       </Popout>
     </React.Fragment>
   );

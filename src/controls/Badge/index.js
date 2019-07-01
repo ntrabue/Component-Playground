@@ -34,10 +34,10 @@ function badgeType(type, size, theme) {
       state = { ...state, backgroundColor: theme.colors.red };
       break;
     }
-    case "transparent": {
+    case "light": {
       state = {
         ...state,
-        backgroundColor: theme.colors.transparent,
+        backgroundColor: "#e5e5e5",
         color: theme.colors.text
       };
       break;

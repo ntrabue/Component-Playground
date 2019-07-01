@@ -1,2 +1,0 @@
-# NickReactPlayground
-Created with CodeSandbox

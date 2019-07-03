@@ -1,29 +1,56 @@
 import styled from "@emotion/styled";
 
-export const Button = styled.button`
-  position: relative;
-  cursor: pointer;
-  display: inline-block;
-  font-weight: 400;
-  text-align: center;
-  vertical-align: middle;
-  user-select: none;
-  padding: 0.375rem 0.75rem;
-  font-size: 1rem;
-  line-height: 1.5;
-  transition: all 0.15s ease-in-out;
+function buttonColor(color, theme) {
+  let state = {
+    background: "transparent",
+    border: "2px solid transparent",
+    color: theme.colors.text
+  };
+  //outline default, positive, negative, prominent
+  switch (color) {
+    case "positive": {
+      state = { ...state, background: theme.colors.green, color: "#fff" };
+      break;
+    }
+    case "negative": {
+      state = { ...state, background: theme.colors.red, color: "#fff" };
+      break;
+    }
+    case "prominent": {
+      state = { ...state, background: theme.colors.orange, color: "#fff" };
+      break;
+    }
+    default: {
+      state = { ...state, border: "2px solid #bbb" };
+      break;
+    }
+  }
 
-  margin: ${({ margin }) => (margin ? margin : "0px")};
-  background: ${({ background, theme }) =>
-    background ? theme.colors[background] : theme.colors.green};
-  color: ${({ color, theme }) => (color ? theme.colors[color] : "#fff")};
-  border: ${({ border, theme }) =>
-    border ? theme.colors[border] : "1px solid transparent"};
+  return state;
+}
+
+export const Button = styled.button`
+  display: inline-block;
+  color: #fff;
+  text-decoration: none;
+  font-weight: normal;
+  line-height: 1;
+  outline: 0;
+  border: 0;
+  border-radius: 2px;
+  background: #40cb90;
+  cursor: pointer;
+  -webkit-appearance: none;
+  -webkit-tap-highlight-color: transparent;
+  padding: 8px 12px;
+  transition: color 0.1s ease, border 0.1s ease, background 0.1s ease;
+  font-size: ${({ size, theme }) => (size ? theme.font[size] : theme.font.reg)};
+  ${({ color, theme }) => buttonColor(color, theme)};
 
   &:focus {
     outline: 0px;
   }
   &:hover {
-    filter: brightness(85%);
+    filter: brightness(120%);
   }
 `;

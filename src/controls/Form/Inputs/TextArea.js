@@ -3,7 +3,7 @@ import styled from "@emotion/styled";
 export const TextArea = styled.textarea`
   display: flex;
   width: 100%;
-  height: 180px;
+  height: 145px;
   border: none;
   border-radius: 5px;
   font-size: ${({ theme }) => theme.font.md};

@@ -1,4 +1,5 @@
 import React from "react";
+import { Page, Row } from "../controls/Layout";
 import ContextMenu, {
   MenuListItem,
   MenuListLink
@@ -12,14 +13,13 @@ import Tooltip from "../controls/Tooltip";
 import Popout from "../controls/Popout";
 import TestModal from "./TestModal";
 import { Input, Label, Form } from "../controls/Form";
+import Accordian from "../controls/Accordian";
+import AccordianPopout from "./AccordianPopout";
+import ConfirmModal from "./ConfirmModal";
 
 const Dashboard = () => {
-  function handleSubmit(values) {
-    alert(values);
-  }
-
   return (
-    <React.Fragment>
+    <Page>
       <H2>Headings</H2>
       <Title>Title</Title>
       <H2>H2</H2>
@@ -27,7 +27,17 @@ const Dashboard = () => {
       <H4>H4</H4>
       <hr />
       <H2>Buttons</H2>
+      <H4>Sizes</H4>
+      <Button size="sm">Small</Button>
       <Button>Default</Button>
+      <Button size="md">Medium</Button>
+      <Button size="lg">Large</Button>
+      <Button size="xl">Extra Large</Button>
+      <H4>Colors</H4>
+      <Button>Default</Button>
+      <Button color="positive">Positive</Button>
+      <Button color="negative">Negative</Button>
+      <Button color="prominent">Prominent</Button>
       <hr />
       <H2>Avatar</H2>
       <H4>No Border:</H4>
@@ -94,8 +104,21 @@ const Dashboard = () => {
       <Badge type="green">Green</Badge>
 
       <hr />
-      <H2>Form Elements</H2>
+      <H2>Popout</H2>
+      <Row justify="space-between">
+        <Popout width="350px" content={<TestModal />}>
+          <Button>Click to see a popout</Button>
+        </Popout>
+        <Popout content={<ConfirmModal />}>
+          <Button>Confirmation Popout</Button>
+        </Popout>
+        <Popout content={<AccordianPopout />}>
+          <Button>Click to see an Accordian</Button>
+        </Popout>
+      </Row>
+      <hr />
       <Form>
+        <H2>Form Elements</H2>
         <Label>Text</Label>
         <Input type="text" />
 
@@ -144,23 +167,31 @@ const Dashboard = () => {
         <H2>Here is a card</H2>
       </Card>
       <hr />
-      <H2>Popout</H2>
-      <Popout content={<TestModal />}>
-        <Button margin="0 10px">Click to see a popout</Button>
-      </Popout>
-      <Popout content={<TestModal />}>
-        <Button margin="0 10px">Click to see a popout</Button>
-      </Popout>
-      <Popout content={<TestModal />}>
-        <Button margin="0 10px">Click to see a popout</Button>
-      </Popout>
-      <Popout content={<TestModal />}>
-        <Button margin="0 10px">Click to see a popout</Button>
-      </Popout>
-      <Popout content={<TestModal />}>
-        <Button margin="0 10px">Click to see a popout</Button>
-      </Popout>
-    </React.Fragment>
+
+      <Accordian title="Click Me!">
+        <p>Oh look, now I'm expanded!</p>
+      </Accordian>
+      <Accordian title="Lorem Ipsum">
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean odio
+          nulla, tincidunt vitae convallis dignissim, accumsan vel sapien. Sed
+          nec elit rutrum, posuere ligula et, consectetur sapien. In lobortis
+          neque quam, nec feugiat urna euismod eu. Vivamus et mi dictum,
+          vehicula sem vel, sagittis metus. Suspendisse in dui laoreet,
+          vulputate massa in, ornare nisl. Aenean eget pulvinar est. Duis
+          condimentum rhoncus lorem vitae tempor. Nulla ultricies tempus arcu,
+          vitae congue mi volutpat at. Donec ultricies orci et ex ultricies, vel
+          tincidunt libero facilisis. Vestibulum sodales, magna id laoreet
+          rutrum, felis nisi imperdiet tellus, et semper odio magna sit amet
+          ligula. Duis molestie dolor id sapien viverra, quis laoreet lorem
+          condimentum. Donec auctor diam quis ligula fermentum, eget rhoncus ex
+          aliquet. Orci varius natoque penatibus et magnis dis parturient
+          montes, nascetur ridiculus mus. Integer odio odio, vulputate rhoncus
+          diam ac, condimentum volutpat quam. Vivamus quam lectus, sollicitudin
+          eu nisl eu, porta fermentum neque.
+        </p>
+      </Accordian>
+    </Page>
   );
 };
 

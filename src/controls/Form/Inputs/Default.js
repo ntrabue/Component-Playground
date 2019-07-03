@@ -7,6 +7,7 @@ export const Default = styled.input`
   font-size: ${({ theme }) => theme.font.md};
   background-color: #fff;
   background-clip: padding-box;
+  text-indent: 8px;
   border: 1px solid #ced4da;
   border-radius: 0.25rem;
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;

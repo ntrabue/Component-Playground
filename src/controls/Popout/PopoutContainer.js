@@ -10,7 +10,7 @@ const PopoutContainer = styled.div`
 
   &:before {
     display: ${({ arrow }) =>
-      arrow.visible && arrow.placement === "top" ? "block" : "none"};
+      arrow && arrow.visible && arrow.position === "top" ? "block" : "none"};
     content: "";
     height: 0px;
     width: 0px;
@@ -29,7 +29,7 @@ const PopoutContainer = styled.div`
 
   &:after {
     display: ${({ arrow }) =>
-      arrow.visible && arrow.placement === "bottom" ? "block" : "none"};
+      arrow && arrow.visible && arrow.position === "bottom" ? "block" : "none"};
     content: "";
     height: 0px;
     width: 0px;

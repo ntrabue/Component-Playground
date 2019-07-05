@@ -1,8 +1,6 @@
-import React from "react";
 import styled from "@emotion/styled";
-import { usePopoutDispatch } from "./";
 
-const PopoutBackgroundStyle = styled.div`
+const PopoutBackground = styled.div`
   position: fixed;
   width: 100%;
   height: 100%;
@@ -15,14 +13,5 @@ const PopoutBackgroundStyle = styled.div`
   -webkit-transition: opacity 0.2s ease;
   transition: opacity 0.2s ease;
 `;
-
-const PopoutBackground = ({ children }) => {
-  const dispatch = usePopoutDispatch();
-  return (
-    <PopoutBackgroundStyle onClick={() => dispatch(false)}>
-      {children}
-    </PopoutBackgroundStyle>
-  );
-};
 
 export default PopoutBackground;

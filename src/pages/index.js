@@ -20,6 +20,9 @@ import ConfirmModal from "./ConfirmModal";
 const Dashboard = () => {
   return (
     <Page>
+      <Popout content={<AccordianPopout />}>
+        <Button>New Popout</Button>
+      </Popout>
       <H2>Headings</H2>
       <Title>Title</Title>
       <H2>H2</H2>

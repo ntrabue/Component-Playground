@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 import { H2 } from "../controls/Headings";
 import { usePopoutDispatch } from "../controls/Popout";
 import { Button } from "../controls/Button";
 import { Row } from "../controls/Layout";
-import { Form, Input } from "../controls/Form";
+import { Form } from "../controls/Form";
 
 const ConfirmModal = () => {
   const dispatch = usePopoutDispatch();

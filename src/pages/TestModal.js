@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { H2 } from "../controls/Headings";
 
 const TestModal = () => {

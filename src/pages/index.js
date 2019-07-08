@@ -16,6 +16,7 @@ import { Input, Label, Form } from "../controls/Form";
 import Accordian from "../controls/Accordian";
 import AccordianPopout from "./AccordianPopout";
 import ConfirmModal from "./ConfirmModal";
+import MultiSelectContainer from "./MultiSelectContainer";
 
 const Dashboard = () => {
   return (
@@ -140,6 +141,8 @@ const Dashboard = () => {
 
         <Label>Switch</Label>
         <Input type="switch" />
+
+        <MultiSelectContainer />
       </Form>
 
       <hr />

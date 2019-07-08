@@ -48,7 +48,7 @@ export const Button = styled.button`
   ${({ color, theme }) => buttonColor(color, theme)};
 
   &:focus {
-    outline: 0px;
+    filter: brightness(120%);
   }
   &:hover {
     filter: brightness(120%);

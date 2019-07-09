@@ -1,22 +1,27 @@
 import React from "react";
+import {
+  useMultiSelectState,
+  useMultiSelectDispatch
+} from "../MultiSelectContext";
 import ChoiceList from "./ChoiceList";
 import Choice from "./Choice";
 
-const Dropdown = ({ searchValue, searchResults, onChange, value }) => {
+const Dropdown = () => {
+  const { options } = useMultiSelectState();
+  const dispatch = useMultiSelectDispatch();
+
   return (
     <ChoiceList>
-      {searchValue && !searchResults ? (
-        <p>No Search Results Found!</p>
-      ) : (
-        searchResults.map(result => (
-          <Choice
-            result={result}
-            onChange={onChange}
-            value={value}
-            key={result.value}
-          />
-        ))
-      )}
+      {options.list.map(result => (
+        <Choice
+          result={result}
+          key={result.value}
+          active={result.value === options.list[options.active].value}
+          onClick={() => dispatch({ type: "add", value: result.value })}
+        >
+          {result.label}
+        </Choice>
+      ))}
     </ChoiceList>
   );
 };

@@ -4,6 +4,7 @@ const MultiSelectContainer = styled.div`
   max-width: 100%;
   display: flex;
   flex-wrap: wrap;
+  flex: 1 1 0%;
   align-items: center;
   border: 1px solid #ced4da;
   border-radius: 0.25rem;

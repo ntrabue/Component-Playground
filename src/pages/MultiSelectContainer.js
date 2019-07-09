@@ -52,20 +52,12 @@ const MultiSelectContainer = () => {
   const current = [options[0].value];
   const [selected, setSelected] = useState(current);
 
-  function handleChange(value) {
-    if (!selected.includes(value)) {
-      setSelected([...selected, value]);
-    } else {
-      setSelected(selected.filter(option => option !== value));
-    }
-  }
-
   return (
     <MultiSelect
       label="Select a Person"
       value={selected}
       options={options}
-      onChange={handleChange}
+      onChange={setSelected}
     />
   );
 };

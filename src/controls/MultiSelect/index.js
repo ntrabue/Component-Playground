@@ -1,72 +1,38 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { Label } from "../Form";
+import { MultiSelectProvider } from "./MultiSelectContext";
 import MultiSelectContainer from "./MultiSelectContainer";
-import Searchbar from "./Searchbar";
 import Selected from "./Selected";
+import Searchbar from "./Searchbar";
 import Dropdown from "./Dropdown";
 
 const MultiSelect = ({ label, options, value, onChange }) => {
   const multiSelect = useRef();
-  const [focusing, changeFocus] = useState(false);
-  const [searching, startSearch] = useState(false);
-  const [searchValue, changeSearch] = useState("");
-  const [searchResults, changeResults] = useState([]);
+  const [toggled, toggle] = useState(false);
 
   useEffect(() => {
-    const uncheckedOptions = options.filter(
-      option => !value.includes(option.value)
-    );
-    const searchMatch = uncheckedOptions.filter(option =>
-      option.label.toLowerCase().startsWith(searchValue.toLowerCase())
-    );
-    changeResults(searchMatch);
-  }, [searchValue, options, value]);
-
-  useEffect(() => {
-    changeSearch("");
-  }, [value]);
-
-  useEffect(() => {
-    if (focusing) {
+    if (toggled) {
       function clickHandler(e) {
-        if (!multiSelect.current.contains(e.target)) {
-          startSearch(false);
-          changeSearch("");
-          changeFocus(false);
-          return changeFocus(false);
+        if (multiSelect.current.contains(e.target)) {
+          return;
+        } else {
+          toggle(false);
         }
-        return;
       }
-      startSearch(true);
       document.addEventListener("mousedown", clickHandler);
-      return () => {
-        document.removeEventListener("mousedown", clickHandler);
-      };
+      return () => document.removeEventListener("mousedown", clickHandler);
     }
-  }, [focusing]);
+  }, [toggled]);
 
   return (
-    <React.Fragment>
+    <MultiSelectProvider options={options} value={value} onChange={onChange}>
       <Label>{label}</Label>
-      <MultiSelectContainer>
-        <Selected options={options} value={value} onChange={onChange} />
-        <div ref={multiSelect} onFocus={() => changeFocus(true)}>
-          <Searchbar
-            type="search"
-            value={searchValue}
-            onChange={e => changeSearch(e.target.value)}
-          />
-          {searching && (
-            <Dropdown
-              searchValue={searchValue}
-              searchResults={searchResults}
-              onChange={onChange}
-              value={value}
-            />
-          )}
-        </div>
+      <MultiSelectContainer ref={multiSelect} onFocus={() => toggle(true)}>
+        <Selected />
+        <Searchbar />
+        {toggled && <Dropdown />}
       </MultiSelectContainer>
-    </React.Fragment>
+    </MultiSelectProvider>
   );
 };
 
